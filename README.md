@@ -4,6 +4,6 @@ A sample open-source northdatabase is used for sample queries.
 2. A Sample Map for the analysis on the dataset is displayed
 3. Data Visualisation using Tableau is shown
 
-[embed]https://github.com/Chedeshri/Data-Analysis/blob/main/Tableau%20Dashboard.pdf[/embed]
+[embed] https://github.com/Chedeshri/Data-Analysis/blob/main/Tableau%20Dashboard.pdf [/embed]
 
 
