@@ -1,0 +1,15 @@
+USE Northwind
+SELECT * FROM Products
+SELECT productid,ProductName,
+CASE
+WHEN (UnitsInStock < UnitsOnOrder and
+Discontinued = 0)
+THEN 'Negative Inventory - Order Now!'
+WHEN ((UnitsInStock - UnitsOnOrder)<
+ReorderLevel and Discontinued = 0)
+THEN 'Reorder Level Reached - Place Order'
+WHEN (Discontinued = 1)
+THEN '****Discontinued****'
+ELSE 'In Stock'
+END AS [Stock Status]
+FROM products
