@@ -1,0 +1,17 @@
+-- Orders that took more than 2 days for shipping for total sale more than certain amount --
+USE Northwind
+SELECT * FROM Orders
+SELECT o.OrderID, o.CustomerID, o.OrderDate, o.ShippedDate, o.ShipCountry,
+DATEDIFF(DAY, OrderDate, ShippedDate) AS Duration_to_Ship,
+SUM(od.Quantity * od.UnitPrice) AS [Total Sale Amount]
+FROM
+Orders o
+INNER JOIN
+[Order Details] od
+ON o.OrderID = od.OrderID
+WHERE
+DATEDIFF(DAY, OrderDate, ShippedDate) > 2
+GROUP BY o.OrderID, CustomerID, OrderDate, ShippedDate, ShipCountry
+HAVING SUM(od.Quantity * od.UnitPrice) > 10000
+ORDER BY DATEDIFF(DAY, OrderDate, ShippedDate) DESC
+
