@@ -1,0 +1,15 @@
+USE Northwind
+SELECT * FROM [Order Details]
+SELECT * FROM Orders
+SELECT * FROM Customers
+SELECT TOP 10 c.CompanyName, c.City, c.Country,
+SUM(od.Quantity * od.UnitPrice) AS Total
+FROM Customers c
+INNER JOIN Orders o
+ON c.CustomerID = o.CustomerID
+INNER JOIN
+[Order Details] od
+ON o.OrderID = od.OrderID
+WHERE YEAR (o.OrderDate) = '2018'
+GROUP BY c.CompanyName, c.City, c.Country
+ORDER BY Total DESC
